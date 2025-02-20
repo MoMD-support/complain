@@ -30,30 +30,30 @@
     <form id="dataForm">
         <div class="dataForm">
          <input type="text" id="name" placeholder="الاسم"  required>
-         <label for="name"> : الاسم الثلاثي واللقب</label></div>
+         <label for="name"> : *الاسم الثلاثي واللقب</label></div>
        
     <div class="dataForm">
          <input type="tel" id="phone" placeholder="رقم الهاتف" required>
-        <label for="email"> : رقم الموبايل </label></div>
+        <label for="email"> : *رقم الموبايل </label></div>
     <div class="dataForm">
         <input type="text" id="gov1" placeholder="محافظة النزوح" required>
-        <label for="gov1"> : محافظة النزوح</label> </div>
+        <label for="gov1"> : *محافظة النزوح</label> </div>
    
     <div class="dataForm">
         <input type="date" id="Ddate" placeholder="تاريخ النزوح" required>
-        <label for="Ddate"> : تاريخ النزوح</label></div>
+        <label for="Ddate"> : *تاريخ النزوح</label></div>
      <div class="dataForm">
-        <input type="text" id="camp" placeholder= "المخيم او العنوان داخل محافظة النزوح"required >
+        <input type="text" id="camp" placeholder= "المخيم او العنوان داخل محافظة النزوح" >
         <label for="camp"> : اسم المخيم </label></div>
      <div class="dataForm">
-        <input type="text" id="gov2" placeholder="محافظة العودة" required>
+        <input type="text" id="gov2" placeholder="محافظة العودة" >
         <label for="gov2"> : محافظة العودة</label></div>
         <div class="dataForm">
-        <input type="date" id="Bdate" placeholder="تاريخ العودة" required>
+        <input type="date" id="Bdate" placeholder="تاريخ العودة" >
         <label for="Bdate"> : تاريخ العودة</label></div>
         <div class="dataForm">
 
-               <label for="prob"> : المشكلة او الاستفسار </label></div>
+               <label for="prob"> : *المشكلة او الاستفسار </label></div>
                <textarea type="text" id="prob"  rows="5" cols="40" placeholder="الطلب او المشكلة" required> </textarea><br><br> 
                
         <button type="submit">إرسال البيانات</button>
@@ -71,14 +71,14 @@
                 phone: document.getElementById("phone").value,
                 gov1: document.getElementById("gov1").value,
                 Ddate: document.getElementById("Ddate").value,
-                camp: document.getElementById("camp").value,     
-                gov2: document.getElementById("gov2").value,
-                Bdate: document.getElementById("Bdate").value,
+                camp: document.getElementById("camp").value || "",     
+                gov2: document.getElementById("gov2").value || "",
+                Bdate: document.getElementById("Bdate").value || "",
                 prob: document.getElementById("prob").value
 
             };
            
-            fetch("https://script.google.com/macros/s/AKfycbyRQetPC3XHnjPHvUblgSdJWgyqOnB6yIGHnK8dqeK2p5er0jqo1C5gTf1cCLKnaAVW/exec", { 
+            fetch("https://script.google.com/macros/s/AKfycbx99BK9VGzosJ9-07ke0as0TtwMlcBlXZTR8AgRuIqM7-uGCQi2dljRLjK9mr9PThEO/exec", { 
                 
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
