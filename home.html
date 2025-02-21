@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج إدخال البيانات</title>
+    <style>
+        body { font-family: Calibri; text-align: center; margin-top: 30px; }
+        form { max-width: 400px; margin: auto; background: #C9DFEC; padding: 20px; border-radius: 10px; }
+        input { width: 60%; padding: 10px; margin: 10px 0;text-align: right; border: 1px solid #ccc; border-radius: 5px; }
+        button { background-color: #217fa7; font-weight: bold;color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #218838; }
+       
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+@media (max-width: 767px) {
+    body {
+        font-size: 0.770rem; /* 12px */
+    }
+
+    </style>
+</head>
+<body>
+
+    <img src="logo1.jpg" alt="no image" width="100" height="100"><br>
+    <h2>نموذج إدخال البيانات</h2>
+    <form id="dataForm">
+        <div class="dataForm">
+         <input type="text" id="name" placeholder="الاسم"  required>
+         <label for="name"> : *الاسم الثلاثي واللقب</label></div>
+      
+    <div class="dataForm">
+         <input type="tel" id="phone" placeholder="رقم الهاتف" required>
+        <label for="email"> : *رقم الموبايل </label></div>
+    <div class="dataForm">
+        <input type="text" id="gov1" placeholder="محافظة النزوح" required>
+        <label for="gov1"> : *محافظة النزوح</label> </div>
+   
+    <div class="dataForm">
+        <input type="date" id="Ddate" placeholder="تاريخ النزوح" required>
+        <label for="Ddate"> : *تاريخ النزوح</label></div>
+     <div class="dataForm">
+        <input type="text" id="camp" placeholder= "المخيم او العنوان داخل محافظة النزوح" >
+        <label for="camp"> : اسم المخيم </label></div>
+     <div class="dataForm">
+        <input type="text" id="gov2" placeholder="محافظة العودة" >
+        <label for="gov2"> : محافظة العودة</label></div>
+        <div class="dataForm">
+        <input type="date" id="Bdate" placeholder="تاريخ العودة" >
+        <label for="Bdate"> : تاريخ العودة</label></div>
+        <div class="dataForm">
+
+               <label for="prob"> : *المشكلة او الاستفسار </label></div>
+               <textarea type="text" id="prob"  rows="5" cols="40" placeholder="الطلب او المشكلة" required> </textarea><br><br> 
+               
+        <button type="submit">إرسال البيانات</button>
+       
+    </form>
+    <p id="message"></p>
+   
+    <script>
+        
+              document.getElementById("dataForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("message").innerText = "يرجى الانتظار لتحميل البيانات.";
+                     let formData = {
+                name: document.getElementById("name").value,
+                phone: document.getElementById("phone").value,
+                gov1: document.getElementById("gov1").value,
+                Ddate: document.getElementById("Ddate").value,
+                camp: document.getElementById("camp").value || "",     
+                gov2: document.getElementById("gov2").value || "",
+                Bdate: document.getElementById("Bdate").value || "",
+                prob: document.getElementById("prob").value
+
+            };
+           
+            fetch("https://script.google.com/macros/s/AKfycbx99BK9VGzosJ9-07ke0as0TtwMlcBlXZTR8AgRuIqM7-uGCQi2dljRLjK9mr9PThEO/exec", { 
+                
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+                mode: 'no-cors' // Disables CORS
+                
+                           })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("message").innerText = "✅ تم استلام البيانات" + data;
+    		document.getElementById("dataForm").reset();
+            })
+        
+            .catch(error => {
+    console.error("Error:", error);
+    document.getElementById("message").innerText = "❌ حدث خطأ أثناء الإرسال.";
+}) 
+})
+    </script>
+</body>
+</html>
