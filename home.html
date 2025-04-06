@@ -33,7 +33,10 @@
         <div class="dataForm">
          <input type="text" id="name" placeholder="الاسم"  required>
          <label for="name"> : *الاسم الثلاثي واللقب</label></div>
-
+        
+ <div class="dataForm">
+         <input type="text" id="Mname" placeholder="اسم الام الثلاثي"  required>
+         <label for="Mname"> : *اسم الام الثلاثي</label></div>
       
     <div class="dataForm">
          <input type="tel" id="phone" placeholder="رقم الهاتف" required>
@@ -72,6 +75,7 @@
             document.getElementById("message").innerText = "يرجى الانتظار لتحميل البيانات.";
                      let formData = {
                 name: document.getElementById("name").value,
+                Mname: document.getElementById("Mname").value,        
                 phone: document.getElementById("phone").value,
                 gov1: document.getElementById("gov1").value,
                 Ddate: document.getElementById("Ddate").value,
@@ -82,7 +86,7 @@
 
             };
            
-            fetch("https://script.google.com/macros/s/AKfycbx99BK9VGzosJ9-07ke0as0TtwMlcBlXZTR8AgRuIqM7-uGCQi2dljRLjK9mr9PThEO/exec", { 
+            fetch("https://script.google.com/macros/s/AKfycbyZpavrDGsZzAsWDuLLrktc4z9Wk9odt_ZfwevUMstgA4OiFO1dmz2-2fq8b3zpcvbN/exec", { 
                 
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
